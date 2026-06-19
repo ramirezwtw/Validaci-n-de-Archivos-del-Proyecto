@@ -1,0 +1,25 @@
+name: Validacion de Estructura CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  validar-archivos:
+    runs-on: ubuntu-latest
+    steps:
+      # Paso 1: El robot descarga tu código para revisarlo
+      - name: Descargar el codigo del repositorio
+        uses: actions/checkout@v4
+
+      # Paso 2: El robot verifica que existan los archivos obligatorios
+      - name: Verificar archivos (index, css, js, readme)
+        run: |
+          echo "Comprobando la estructura mínima..."
+          test -f index.html || (echo "Falta index.html" && exit 1)
+          test -f css/style.css || (echo "Falta css/style.css" && exit 1)
+          test -f js/script.js || (echo "Falta js/script.js" && exit 1)
+          test -f README.md || (echo "Falta README.md" && exit 1)
+          echo "¡Todos los archivos obligatorios están presentes!"
