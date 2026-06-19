@@ -1,0 +1,45 @@
+name: Validación de Archivos del Proyecto
+
+# Ejercicio 2: Se ejecuta cuando exista un Push a la rama main
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  verificar-estructura:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Paso 1: Descargar el código del repositorio en la máquina virtual
+      - name: Clonar el código fuente
+        uses: actions/checkout@v4
+
+      # Ejercicio 3: Verificar la existencia de index.html
+      - name: Validar existencia de index.html
+        run: |
+          if [ -f index.html ]; then
+            echo "✅ index.html existe perfectamente."
+          else
+            echo "❌ Error: No se encontró index.html en la raíz."
+            exit 1
+          fi
+
+      # Ejercicio 4: Validar css/style.css y js/script.js
+      - name: Validar existencia de css/style.css
+        run: |
+          if [ -f css/style.css ]; then
+            echo "✅ css/style.css existe perfectamente."
+          else
+            echo "❌ Error: No se encontró css/style.css."
+            exit 1
+          fi
+
+      - name: Validar existencia de js/script.js
+        run: |
+          if [ -f js/script.js ]; then
+            echo "✅ js/script.js existe perfectamente."
+          else
+            echo "❌ Error: No se encontró js/script.js."
+            exit 1
+          fi
