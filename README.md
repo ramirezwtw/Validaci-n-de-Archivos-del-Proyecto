@@ -1,1 +1,3 @@
+![Estado del Workflow](https://github.com/ramirezwtw/Validaci-n-de-Archivos-del-Proyecto/actions/workflows/ci.yml/badge.svg)
+
 ![Estado del Workflow](https://github.com/ramirezwtw/Validaci-n-de-Archivos-del-Proyecto/actions/workflows/validar-archivos.yml/badge.svg)
